@@ -4,6 +4,6 @@ This is a Discord bot that can join a channel and stream the audio of all the us
 
 To install with Docker run
 ```
-docker build -t whisperbot .
-docker run -p 5000:5000 --gpus all -it whisperbot
+docker build -t whisperbot-audio .
+docker run -p 5000:5000 -it whisperbot-audio
 ```
