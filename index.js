@@ -2,7 +2,7 @@ const { Client, Intents, VoiceReceiver } = require('discord.js');
 const prism = require('prism-media');
 require('dotenv').config()
 
-const client = new Client({ intents: [Intents.FLAGS.Guilds, Intents.FLAGS.GuildVoiceStates] });
+const client = new Client({ intents: ["GUILDS", "GUILD_VOICE_STATES", "GUILD_MESSAGES"] });
 
 client.once('ready', () => {
     console.log('Ready!');
