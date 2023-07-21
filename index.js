@@ -1,4 +1,5 @@
 const { Client, Intents, VoiceReceiver } = require('discord.js');
+const { joinVoiceChannel } = require('@discordjs/voice')
 const prism = require('prism-media');
 require('dotenv').config()
 
@@ -10,9 +11,13 @@ client.once('ready', () => {
 
 client.on('messageCreate', async message => {
     if (!message.guild) return;
-    if (message.content === '/join') {
+    if (message.content === '!join WhisperBot') {
         if (message.member.voice.channel) {
-            const connection = await message.member.voice.channel.join();
+            const connection = joinVoiceChannel({
+                channelId: message.member.voice.channel.id,
+                guildId: message.member.voice.channel.guild.id,
+                adapterCreator: message.member.voice.channel.guild.voiceAdapterCreator,
+            });
             const receiver = connection.receiver;
             connection.on('speaking', (user, speaking) => {
                 if (speaking) {
